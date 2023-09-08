@@ -1,0 +1,118 @@
+SQL> SELECT 'HELLO' FROM DUAL;
+
+'HELL                                                                           
+-----                                                                           
+HELLO                                                                           
+
+SQL> SELECT 620 FROM DUAL;
+
+       620                                                                      
+----------                                                                      
+       620                                                                      
+
+SQL> SELECT '06-SEPT-23' FROM DUAL;
+
+'06-SEPT-2                                                                      
+----------                                                                      
+06-SEPT-23                                                                      
+
+SQL> SELECT ENAME||SAL FROM EMP;
+
+ENAME||SAL                                                                      
+--------------------------------------------------                              
+SMITH800                                                                        
+ALLEN1600                                                                       
+WARD1250                                                                        
+JONES2975                                                                       
+MARTIN1250                                                                      
+BLAKE2850                                                                       
+CLARK2450                                                                       
+SCOTT3000                                                                       
+KING5000                                                                        
+TURNER1500                                                                      
+ADAMS1100                                                                       
+
+ENAME||SAL                                                                      
+--------------------------------------------------                              
+JAMES950                                                                        
+FORD3000                                                                        
+MILLER1300                                                                      
+
+14 rows selected.
+
+SQL> SELECT 'SQL'||'JAVA' FROM DUAL;
+
+'SQL'||                                                                         
+-------                                                                         
+SQLJAVA                                                                         
+
+SQL> SELECT 44||99 FROM DUAL;
+
+44||                                                                            
+----                                                                            
+4499                                                                            
+
+SQL> SELECT 'SQL'||99 FROM DUAL;
+
+'SQL'                                                                           
+-----                                                                           
+SQL99                                                                           
+
+SQL> SELECT ENAME||'IS WORKING AS A'||JOB||'IN DEPT'||DEPTNO
+  2  FROM EMP;
+
+ENAME||'ISWORKINGASA'||JOB||'INDEPT'||DEPTNO                                    
+--------------------------------------------------------------------------------
+SMITHIS WORKING AS ACLERKIN DEPT20                                              
+ALLENIS WORKING AS ASALESMANIN DEPT30                                           
+WARDIS WORKING AS ASALESMANIN DEPT30                                            
+JONESIS WORKING AS AMANAGERIN DEPT20                                            
+MARTINIS WORKING AS ASALESMANIN DEPT30                                          
+BLAKEIS WORKING AS AMANAGERIN DEPT30                                            
+CLARKIS WORKING AS AMANAGERIN DEPT10                                            
+SCOTTIS WORKING AS AANALYSTIN DEPT20                                            
+KINGIS WORKING AS APRESIDENTIN DEPT10                                           
+TURNERIS WORKING AS ASALESMANIN DEPT30                                          
+ADAMSIS WORKING AS ACLERKIN DEPT20                                              
+
+ENAME||'ISWORKINGASA'||JOB||'INDEPT'||DEPTNO                                    
+--------------------------------------------------------------------------------
+JAMESIS WORKING AS ACLERKIN DEPT30                                              
+FORDIS WORKING AS AANALYSTIN DEPT20                                             
+MILLERIS WORKING AS ACLERKIN DEPT10                                             
+
+14 rows selected.
+
+SQL> SELECT ENAME||'IS WORKING AS A'||JOB||'IN DEPT'||DEPTNO||'AND EARNING A SALARY OF'||SAL FROM EMP;
+
+ENAME||'ISWORKINGASA'||JOB||'INDEPT'||DEPTNO||'ANDEARNINGASALARYOF'||SAL        
+--------------------------------------------------------------------------------
+SMITHIS WORKING AS ACLERKIN DEPT20AND EARNING A SALARY OF800                    
+ALLENIS WORKING AS ASALESMANIN DEPT30AND EARNING A SALARY OF1600                
+WARDIS WORKING AS ASALESMANIN DEPT30AND EARNING A SALARY OF1250                 
+JONESIS WORKING AS AMANAGERIN DEPT20AND EARNING A SALARY OF2975                 
+MARTINIS WORKING AS ASALESMANIN DEPT30AND EARNING A SALARY OF1250               
+BLAKEIS WORKING AS AMANAGERIN DEPT30AND EARNING A SALARY OF2850                 
+CLARKIS WORKING AS AMANAGERIN DEPT10AND EARNING A SALARY OF2450                 
+SCOTTIS WORKING AS AANALYSTIN DEPT20AND EARNING A SALARY OF3000                 
+KINGIS WORKING AS APRESIDENTIN DEPT10AND EARNING A SALARY OF5000                
+TURNERIS WORKING AS ASALESMANIN DEPT30AND EARNING A SALARY OF1500               
+ADAMSIS WORKING AS ACLERKIN DEPT20AND EARNING A SALARY OF1100                   
+
+ENAME||'ISWORKINGASA'||JOB||'INDEPT'||DEPTNO||'ANDEARNINGASALARYOF'||SAL        
+--------------------------------------------------------------------------------
+JAMESIS WORKING AS ACLERKIN DEPT30AND EARNING A SALARY OF950                    
+FORDIS WORKING AS AANALYSTIN DEPT20AND EARNING A SALARY OF3000                  
+MILLERIS WORKING AS ACLERKIN DEPT10AND EARNING A SALARY OF1300                  
+
+14 rows selected.
+
+SQL> SELECT ENAME||'IS AN EMPLOYEE HAVING A ID OF'||EMPNO||'AND JOINING ON'||HIREDATE||'IN DEPT'||DEPTNO||'AND EARNING COMMISSION MORE THAN'|| COMM FROM EMP WHERE ENAME='ALLEN';
+
+ENAME||'ISANEMPLOYEEHAVINGAIDOF'||EMPNO||'ANDJOININGON'||HIREDATE||'INDEPT'||DEP
+--------------------------------------------------------------------------------
+ALLENIS AN EMPLOYEE HAVING A ID OF7499AND JOINING ON20-FEB-81IN DEPT30AND EARNIN
+G COMMISSION MORE THAN300                                                       
+                                                                                
+
+SQL> SPOOL OFF
