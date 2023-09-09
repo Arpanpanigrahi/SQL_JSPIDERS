@@ -1,0 +1,169 @@
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE ENAME LIKE 'A%' OR ENAME LIKE 'E%' OR ENAME LIKE 'I%' OR ENAME LIKE 'O%' OR ENAME LIKE 'U%';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300      
+        30                                                                      
+                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT ENAME, SAL
+  2  FROM EMP
+  3  WHERE SAL*12 LIKE '%0';
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ALLEN            1600                                                           
+WARD             1250                                                           
+JONES            2975                                                           
+MARTIN           1250                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+SCOTT            3000                                                           
+KING             5000                                                           
+TURNER           1500                                                           
+ADAMS            1100                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JAMES             950                                                           
+FORD             3000                                                           
+MILLER           1300                                                           
+
+14 rows selected.
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE NOT SAL BETWEEN 500 AND 2000
+  4  AND JOB LIKE '%E%';
+
+ENAME                                                                           
+----------                                                                      
+JONES                                                                           
+BLAKE                                                                           
+CLARK                                                                           
+KING                                                                            
+
+SQL> SELECT SAL*12 FROM EMP
+  2  WHERE COMM IS NOT NULL AND (DEPTNO=10 OR DEPTNO=30);
+
+    SAL*12                                                                      
+----------                                                                      
+     19200                                                                      
+     15000                                                                      
+     15000                                                                      
+     18000                                                                      
+
+SQL> SELECT ENAME, SAL+(SAL*2) FROM EMP
+  2  WHERE JOB LIKE '%MAN%';
+
+ENAME      SAL+(SAL*2)                                                          
+---------- -----------                                                          
+ALLEN             4800                                                          
+WARD              3750                                                          
+JONES             8925                                                          
+MARTIN            3750                                                          
+BLAKE             8550                                                          
+CLARK             7350                                                          
+TURNER            4500                                                          
+
+7 rows selected.
+
+SQL> SELECT DNAME FROM DEPT
+  2  WHERE LOC LIKE '%O%';
+
+DNAME                                                                           
+--------------                                                                  
+ACCOUNTING                                                                      
+SALES                                                                           
+OPERATIONS                                                                      
+
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB LIKE 'C%'
+  4  AND COMM BETWEEN 1000 AND 2000
+  5  AND DEPTIN(10,20)
+  6  AND SAL>1500;
+AND SAL>1500
+*
+ERROR at line 6:
+ORA-00920: invalid relational operator 
+
+
+SQL> SELECT SAL FROM EMP
+  2  WHERE HIREDATE LIKE '%FEB%';
+
+       SAL                                                                      
+----------                                                                      
+      1600                                                                      
+      1250                                                                      
+
+SQL> SELECT HIREDATE
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%LL%';
+
+HIREDATE                                                                        
+---------                                                                       
+20-FEB-81                                                                       
+23-JAN-82                                                                       
+
+SQL> SELECT FN||LN
+  2  FROM WISHES;
+FROM WISHES
+     *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL> SELECT ENAME||HIREDATE
+  2  FROM EMP;
+
+ENAME||HIREDATE                                                                 
+-------------------                                                             
+SMITH17-DEC-80                                                                  
+ALLEN20-FEB-81                                                                  
+WARD22-FEB-81                                                                   
+JONES02-APR-81                                                                  
+MARTIN28-SEP-81                                                                 
+BLAKE01-MAY-81                                                                  
+CLARK09-JUN-81                                                                  
+SCOTT19-APR-87                                                                  
+KING17-NOV-81                                                                   
+TURNER08-SEP-81                                                                 
+ADAMS23-MAY-87                                                                  
+
+ENAME||HIREDATE                                                                 
+-------------------                                                             
+JAMES03-DEC-81                                                                  
+FORD03-DEC-81                                                                   
+MILLER23-JAN-82                                                                 
+
+14 rows selected.
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE JOB LIKE '_____' AND DEPTNO=30;
+
+ENAME                                                                           
+----------                                                                      
+JAMES                                                                           
+
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN'
+  4  AND ENAME LIKE '%E_'
+  5  AND SAL LIKE'____';
+
+ENAME                                                                           
+----------                                                                      
+ALLEN                                                                           
+TURNER                                                                          
+
+SQL> SPOOL OFF
