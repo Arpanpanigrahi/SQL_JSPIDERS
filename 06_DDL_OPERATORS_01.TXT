@@ -1,0 +1,158 @@
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATIENT                        TABLE                                            
+
+12 rows selected.
+
+SQL> ALTER TABLE COURSE
+  2  ADD TNAME VARCHAR(20);
+
+Table altered.
+
+SQL> ALTER TABLE COURSE
+  2  RENAME COLUMN FEES TO CFEES
+  3  ;
+
+Table altered.
+
+SQL> ALTER TABLE COURSE
+  2  DROP COLUMN TNAME;
+
+Table altered.
+
+SQL> SELECT * FROM COURSE;
+
+no rows selected
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ CFEES                                              NUMBER(5)
+ DURATION                                           VARCHAR2(20)
+
+SQL> ALTER TABLEV COURSE
+  2  MODIFY DURATION NUMBER(30);
+ALTER TABLEV COURSE
+      *
+ERROR at line 1:
+ORA-00940: invalid ALTER command 
+
+
+SQL> ALTER TABLE COURSE
+  2  MODIFY DURATION NUMBER(30);
+
+Table altered.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATIENT                        TABLE                                            
+
+12 rows selected.
+
+SQL> DROP TABLE STUDENT;
+
+Table dropped.
+
+SQL> SHOW RECYCLEBIN;
+ORIGINAL NAME    RECYCLEBIN NAME                OBJECT TYPE  DROP TIME          
+---------------- ------------------------------ ------------ -------------------
+STUDENT          BIN$bXvVThm9T52pcpF8ncR9eA==$0 TABLE        2023-09-12:15:54:28
+SQL> FLASHBACK TABLE STUDENT
+  2  TO BEFORE DROP;
+
+Flashback complete.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+STUDENT                        TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+PATIENT                        TABLE                                            
+
+12 rows selected.
+
+SQL> PURGE TABLE STUDENT;
+PURGE TABLE STUDENT
+*
+ERROR at line 1:
+ORA-38307: object not in RECYCLE BIN 
+
+
+SQL> DROP TABLE STUDENT;
+
+Table dropped.
+
+SQL> PURGE TABLE STUDENT;
+
+Table purged.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+PATIENT                        TABLE                                            
+
+11 rows selected.
+
+SQL> PURGE RECYCLEBIN;
+
+Recyclebin purged.
+
+SQL> SPOOL OFF

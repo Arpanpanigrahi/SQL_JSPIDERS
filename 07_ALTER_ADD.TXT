@@ -1,0 +1,152 @@
+SQL> DESC COURSE
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                      NOT NULL NUMBER(5)
+ DURATIONJ                                          VARCHAR2(20)
+
+SQL> TRUNCATE TABLE COURSE;
+
+Table truncated.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                      NOT NULL NUMBER(5)
+ DURATIONJ                                          VARCHAR2(20)
+
+SQL> DROP TABLE COURSE;
+
+Table dropped.
+
+SQL> PURGE TABLE COURSE;
+
+Table purged.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+PATIENT                        TABLE                                            
+
+10 rows selected.
+
+SQL> CREATE TABLE COURSE(CID NUMBER(5), CNAME VARCHAR(10), FEES NUMBER(5) CHECK(FEES<20000), DURATIONJ VARCHAR(20));
+
+Table created.
+
+SQL> SELECT * FROM TAB;
+
+TNAME                          TABTYPE  CLUSTERID                               
+------------------------------ ------- ----------                               
+DEPT                           TABLE                                            
+EMP                            TABLE                                            
+BONUS                          TABLE                                            
+SALGRADE                       TABLE                                            
+COURSE                         TABLE                                            
+PRODUCT                        TABLE                                            
+CUSTOMERS                      TABLE                                            
+AUTHOR                         TABLE                                            
+BOOK                           TABLE                                            
+DOCTOR                         TABLE                                            
+PATIENT                        TABLE                                            
+
+11 rows selected.
+
+SQL> ALTER TABLE COURSE
+  2  ADD CONSTRAINT P_K PRIMARYKEY(CID);
+ADD CONSTRAINT P_K PRIMARYKEY(CID)
+                             *
+ERROR at line 2:
+ORA-00902: invalid datatype 
+
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                                NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                               NUMBER(5)
+ DURATIONJ                                          VARCHAR2(20)
+
+SQL> ALTER TABLE COURSE;
+ALTER TABLE COURSE
+                 *
+ERROR at line 1:
+ORA-02210: no options specified for ALTER TABLE 
+
+
+SQL> ALTER TABLE COURSE
+  2  ADD CONSTRAINT P_K PRIMARY KEY(CID);
+
+Table altered.
+
+SQL> ALTER TABLE COURSE
+  2  ADD CONSTRAINT NN NOT NULL(FEES);
+ADD CONSTRAINT NN NOT NULL(FEES)
+                  *
+ERROR at line 2:
+ORA-00904: : invalid identifier 
+
+
+SQL> ALTER TABLE COURSE
+  2  MODIFY FEES NUMBER(5) NOT NULL;
+
+Table altered.
+
+SQL> ALTER TABLE COURSE
+  2  MODIFY CNAME VARCHAR(20) DEFAULT;
+MODIFY CNAME VARCHAR(20) DEFAULT
+                               *
+ERROR at line 2:
+ORA-00936: missing expression 
+
+
+SQL> TRUNCATE TABLE COURSE;
+
+Table truncated.
+
+SQL> DESC COURSE;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                      NOT NULL NUMBER(5)
+ DURATIONJ                                          VARCHAR2(20)
+
+SQL> RENAME COURSE TO SUBJECTS;
+
+Table renamed.
+
+SQL> DESC COURSE;
+ERROR:
+ORA-04043: object COURSE does not exist 
+
+
+SQL> DESC SUBJECTS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                      NOT NULL NUMBER(5)
+ DURATIONJ                                          VARCHAR2(20)
+
+SQL> COMMIT
+  2  
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> EXIT
