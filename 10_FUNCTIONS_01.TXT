@@ -1,0 +1,173 @@
+SQL> SELECT FLOOR(12.1) FROM DUAL;
+
+FLOOR(12.1)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> SELECT FLOOR(12.9) FROM DUAL;
+
+FLOOR(12.9)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> SELECT CEIL(12.1) FROM DUAL;
+
+CEIL(12.1)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> SELECT CEIL(12.9) FROM DUAL;
+
+CEIL(12.9)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> SELECT ROUND(12.1) FROM DUAL;
+
+ROUND(12.1)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> SELECT ROUND(12.4) FROM DUAL;
+
+ROUND(12.4)                                                                     
+-----------                                                                     
+         12                                                                     
+
+SQL> SELECT ROUND(12.5) FROM DUAL;
+
+ROUND(12.5)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> SELECT ROUND(12.9) FROM DUAL;
+
+ROUND(12.9)                                                                     
+-----------                                                                     
+         13                                                                     
+
+SQL> SELECT COMM, NVL(COMM,800) FROM EMP;
+
+      COMM NVL(COMM,800)                                                        
+---------- -------------                                                        
+      1500          1500                                                        
+                     800                                                        
+                     800                                                        
+                     800                                                        
+                     800                                                        
+                     800                                                        
+                     800                                                        
+
+7 rows selected.
+
+SQL> SELECT COMM,NVL2(COMM,800,1000) FROM EMP;
+
+      COMM NVL2(COMM,800,1000)                                                  
+---------- -------------------                                                  
+      1500                 800                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+                          1000                                                  
+
+7 rows selected.
+
+SQL> SELECT LENGTH('WELCOME') FROM DUAL;
+
+LENGTH('WELCOME')                                                               
+-----------------                                                               
+                7                                                               
+
+SQL> SELECT LENGTH('WEL COME') FROM DUAL;
+
+LENGTH('WELCOME')                                                               
+-----------------                                                               
+                8                                                               
+
+SQL> SELECT LENGTH('WE ARE DEVELOPERS') FROM DUAL;
+
+LENGTH('WEAREDEVELOPERS')                                                       
+-------------------------                                                       
+                       17                                                       
+
+SQL> SELECT UPPER('developers') FROM DUAL;
+
+UPPER('DEV                                                                      
+----------                                                                      
+DEVELOPERS                                                                      
+
+SQL> SELECT UPPER('DEVELOPERS') FROM DUAL;
+
+UPPER('DEV                                                                      
+----------                                                                      
+DEVELOPERS                                                                      
+
+SQL> SELECT UPPER('We Are Developers') FROM DUAL;
+
+UPPER('WEAREDEVEL                                                               
+-----------------                                                               
+WE ARE DEVELOPERS                                                               
+
+SQL> SELECT LOWER('WELCOME') FROM DUAL;
+
+LOWER('                                                                         
+-------                                                                         
+welcome                                                                         
+
+SQL> SELECT LOWER('jspiders') FROM DUAL;
+
+LOWER('J                                                                        
+--------                                                                        
+jspiders                                                                        
+
+SQL> SELECT LOWER('ProGRAmmers') FROM DUAL;
+
+LOWER('PROG                                                                     
+-----------                                                                     
+programmers                                                                     
+
+SQL> SELECT INITCAP('JSPIDERS') FROM DUAL;
+
+INITCAP(                                                                        
+--------                                                                        
+Jspiders                                                                        
+
+SQL> SELECT INITCAP('pyspiders') FROM DUAL;
+
+INITCAP('                                                                       
+---------                                                                       
+Pyspiders                                                                       
+
+SQL> SELECT INITCAP('PRACTICE MAKES MAN AND WOMEN PERFECT') FROM DUAL;
+
+INITCAP('PRACTICEMAKESMANANDWOMENPER                                            
+------------------------------------                                            
+Practice Makes Man And Women Perfect                                            
+
+SQL> SELECT REPLACE('JAVA','JAVA','SQL') FROM DUAL;
+
+REP                                                                             
+---                                                                             
+SQL                                                                             
+
+SQL> SELECT REPLACE('JAVA','JA','MA') FROM DUAL;
+
+REPL                                                                            
+----                                                                            
+MAVA                                                                            
+
+SQL> SELECT REPLACE('JAVA','JA') FROM DUAL;
+
+RE                                                                              
+--                                                                              
+VA                                                                              
+
+SQL> SELECT REPLACE('JAVA','A') FROM DUAL;
+
+RE                                                                              
+--                                                                              
+JV                                                                              
+
+SQL> SPOOL OFF

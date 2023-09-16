@@ -1,0 +1,73 @@
+SQL> SELECT MOD(33,6) FROM DUAL;
+
+ MOD(33,6)                                                                      
+----------                                                                      
+         3                                                                      
+
+SQL> SELECT ABS(-12) FROM DUAL;
+
+  ABS(-12)                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> SELECT ABS(12) FROM DUAL;
+
+   ABS(12)                                                                      
+----------                                                                      
+        12                                                                      
+
+SQL> SELECT ABS(13.3) FROM DUAL;
+
+ ABS(13.3)                                                                      
+----------                                                                      
+      13.3                                                                      
+
+SQL> SELECT SQRT(169) FROM DUAL;
+
+ SQRT(169)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> SELECT SQRT(196) FROM DUAL;
+
+ SQRT(196)                                                                      
+----------                                                                      
+        14                                                                      
+
+SQL> SELECT SQRT(200) FROM DUAL;
+
+ SQRT(200)                                                                      
+----------                                                                      
+14.1421356                                                                      
+
+SQL> SELECT POWER(5,5) FROM DUAL;
+
+POWER(5,5)                                                                      
+----------                                                                      
+      3125                                                                      
+
+SQL> SELECT POWER(5,1) FROM DUAL;
+
+POWER(5,1)                                                                      
+----------                                                                      
+         5                                                                      
+
+SQL> SELECT POWER(5,0) FROM DUAL;
+
+POWER(5,0)                                                                      
+----------                                                                      
+         1                                                                      
+
+SQL> SELECT POWER(3,-3) FROM DUAL;
+
+POWER(3,-3)                                                                     
+-----------                                                                     
+ .037037037                                                                     
+
+SQL> SELECT POWER(-3,3) FROM DUAL;
+
+POWER(-3,3)                                                                     
+-----------                                                                     
+        -27                                                                     
+
+SQL> SPOOL OFF

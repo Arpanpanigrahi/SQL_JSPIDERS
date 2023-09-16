@@ -1,0 +1,96 @@
+SQL> SELECT * FROM EMP
+  2  WHERE MOD(SAL,2)=0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      HR              7698 01-JUL-20       1600       1500      
+        30                                                                      
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                 
+        30                                                                      
+                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7788 SCOTT      ANALYST         7566 19-APR-87      20000                 
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+6 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE MOD(SAL,2)!=0;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT LOWER(ENAME), LENGTH(JOB) FROM EMP;
+
+LOWER(ENAM LENGTH(JOB)                                                          
+---------- -----------                                                          
+allen                2                                                          
+jones                7                                                          
+blake                7                                                          
+clark                7                                                          
+scott                7                                                          
+king                 9                                                          
+ford                 7                                                          
+
+7 rows selected.
+
+SQL> SELECT LOWER(ENAME), UPPER(JOB) FROM EMP;
+
+LOWER(ENAM UPPER(JOB                                                            
+---------- ---------                                                            
+allen      HR                                                                   
+jones      MANAGER                                                              
+blake      MANAGER                                                              
+clark      MANAGER                                                              
+scott      ANALYST                                                              
+king       PRESIDENT                                                            
+ford       ANALYST                                                              
+
+7 rows selected.
+
+SQL> SELECT INITCAP(DNAME) FROM DEPT;
+
+INITCAP(DNAME)                                                                  
+--------------                                                                  
+Accounting                                                                      
+Research                                                                        
+Sales                                                                           
+Operations                                                                      
+
+SQL> SELECT REPLACE('DEVELOPER','ER','MENT')
+  2  FROM DUAL;
+
+REPLACE('DE                                                                     
+-----------                                                                     
+DEVELOPMENT                                                                     
+
+SQL> SELECT REPLACE('DEVELOPER','DEVELOPER','DEVELOPMENT')
+  2  FROM DUAL;
+
+REPLACE('DE                                                                     
+-----------                                                                     
+DEVELOPMENT                                                                     
+
+SQL> SPOOL OFF

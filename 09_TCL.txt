@@ -1,0 +1,113 @@
+SQL> DESC SUBJECTS;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ CID                                       NOT NULL NUMBER(5)
+ CNAME                                              VARCHAR2(10)
+ FEES                                      NOT NULL NUMBER(5)
+ DURATION                                           VARCHAR2(20)
+
+SQL> SELECT * FROM SUBJECTS;
+
+       CID CNAME            FEES DURATION                                       
+---------- ---------- ---------- --------------------                           
+        10 JAVA             4000 SIX MONTHS                                     
+        20 SQL              3500 TWO MONTHS                                     
+        40 WEB              2500                                                
+        50 C++              6000                                                
+
+SQL> SAVEPOINT A;
+
+Savepoint created.
+
+SQL> SELECT * FROM SUBJECTS;
+
+       CID CNAME            FEES DURATION                                       
+---------- ---------- ---------- --------------------                           
+        10 JAVA             4000 SIX MONTHS                                     
+        20 SQL              3500 TWO MONTHS                                     
+        40 WEB              2500                                                
+        50 C++              6000                                                
+
+SQL> INSERT INTO SUBJECTS VALUES(30,'C',3500,'THREE MONTHS');
+
+1 row created.
+
+SQL> INSERT INTO SUBJECTS VALUES(40,'N',4000,'FOUR MONTHS');
+INSERT INTO SUBJECTS VALUES(40,'N',4000,'FOUR MONTHS')
+*
+ERROR at line 1:
+ORA-00001: unique constraint (SCOTT.P_K) violated 
+
+
+SQL> INSERT INTO SUBJECTS VALUES(60,'N',4400,'FOUR MONTHS');
+
+1 row created.
+
+SQL> SAVEPOINT B;
+
+Savepoint created.
+
+SQL> INSERT INTO SUBJECTS VALUES(70,'M',4300,'ONE MONTHS');
+
+1 row created.
+
+SQL> SAVEPONIT C;
+SP2-0734: unknown command beginning "SAVEPONIT ..." - rest of line ignored.
+SQL> SAVEPOINT C;
+
+Savepoint created.
+
+SQL> INSERT INTO SUBJECTS VALUES(80,'R',4100,'SEVEN MONTHS');
+
+1 row created.
+
+SQL> SELECT * FROM SUBJECTS;
+
+       CID CNAME            FEES DURATION                                       
+---------- ---------- ---------- --------------------                           
+        10 JAVA             4000 SIX MONTHS                                     
+        20 SQL              3500 TWO MONTHS                                     
+        40 WEB              2500                                                
+        50 C++              6000                                                
+        30 C                3500 THREE MONTHS                                   
+        60 N                4400 FOUR MONTHS                                    
+        70 M                4300 ONE MONTHS                                     
+        80 R                4100 SEVEN MONTHS                                   
+
+8 rows selected.
+
+SQL> ROLLBACK TO B;
+
+Rollback complete.
+
+SQL> SELECT * FROM SUBJECTS;
+
+       CID CNAME            FEES DURATION                                       
+---------- ---------- ---------- --------------------                           
+        10 JAVA             4000 SIX MONTHS                                     
+        20 SQL              3500 TWO MONTHS                                     
+        40 WEB              2500                                                
+        50 C++              6000                                                
+        30 C                3500 THREE MONTHS                                   
+        60 N                4400 FOUR MONTHS                                    
+
+6 rows selected.
+
+SQL> ROLLBACK;
+
+Rollback complete.
+
+SQL> SELECT * FROM SUBJECTS;
+
+       CID CNAME            FEES DURATION                                       
+---------- ---------- ---------- --------------------                           
+        10 JAVA             4000 SIX MONTHS                                     
+        20 SQL              3500 TWO MONTHS                                     
+        40 WEB              2500                                                
+        50 C++              6000                                                
+
+SQL> COMMIT;
+
+Commit complete.
+
+SQL> SPOOL OFF
