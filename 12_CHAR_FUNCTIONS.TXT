@@ -1,0 +1,159 @@
+SQL> SELECT REVERSE('HELLO') FROM DUAL;
+
+REVER                                                                           
+-----                                                                           
+OLLEH                                                                           
+
+SQL> SELECT REVERSE('I AM A DEVELOPER') FROM DUAL;
+
+REVERSE('IAMADEV                                                                
+----------------                                                                
+REPOLEVED A MA I                                                                
+
+SQL> SELECT SUBSTR('WELCOME',4,4) FROM DUAL;
+
+SUBS                                                                            
+----                                                                            
+COME                                                                            
+
+SQL> SELECT SUBSTR('ENGINEER',1,6) FROM DUAL;
+
+SUBSTR                                                                          
+------                                                                          
+ENGINE                                                                          
+
+SQL> SELECT SUBSTR('ENGINEER',1) FROM DUAL;
+
+SUBSTR('                                                                        
+--------                                                                        
+ENGINEER                                                                        
+
+SQL> SELECT SUBSTR('PROG RAM',4,5) FROM DUAL;
+
+SUBST                                                                           
+-----                                                                           
+G RAM                                                                           
+
+SQL> SELECT INSTR('DEVELOPERS','E',1,3) FROM DUAL;
+
+INSTR('DEVELOPERS','E',1,3)                                                     
+---------------------------                                                     
+                          8                                                     
+
+SQL> SELECT INSTR('DEVELOPERS','E',1,2) FROM DUAL;
+
+INSTR('DEVELOPERS','E',1,2)                                                     
+---------------------------                                                     
+                          4                                                     
+
+SQL> SELECT INSTR('DEVELOPERS','E',5,2) FROM DUAL;
+
+INSTR('DEVELOPERS','E',5,2)                                                     
+---------------------------                                                     
+                          0                                                     
+
+SQL> SELECT INSTR('DEVELOPERS','E') FROM DUAL;
+
+INSTR('DEVELOPERS','E')                                                         
+-----------------------                                                         
+                      2                                                         
+
+SQL> SELECT ASCII('A') FROM DUAL;
+
+ASCII('A')                                                                      
+----------                                                                      
+        65                                                                      
+
+SQL> SELECT ASCII('$') FROM DUAL;
+
+ASCII('$')                                                                      
+----------                                                                      
+        36                                                                      
+
+SQL> SELECT ASCII('M') FROM DUAL;
+
+ASCII('M')                                                                      
+----------                                                                      
+        77                                                                      
+
+SQL> SELECT LPAD('HELLO',10,'@') FROM DUAL;
+
+LPAD('HELL                                                                      
+----------                                                                      
+@@@@@HELLO                                                                      
+
+SQL> SELECT LPAD('WELCOME',12,'%') FROM DUAL;
+
+LPAD('WELCOM                                                                    
+------------                                                                    
+%%%%%WELCOME                                                                    
+
+SQL> SELECT RPAD('SQL',7,'EASY') FROM DUAL;
+
+RPAD('S                                                                         
+-------                                                                         
+SQLEASY                                                                         
+
+SQL> SELECT RPAD('JAVA',4,'A') FROM DUAL;
+
+RPAD                                                                            
+----                                                                            
+JAVA                                                                            
+
+SQL> SELECT RPAD('JAVA',3,'A') FROM DUAL;
+
+RPA                                                                             
+---                                                                             
+JAV                                                                             
+
+SQL> SELECT TRIM(' WELCOME ') FROM DUAL;
+
+TRIM('W                                                                         
+-------                                                                         
+WELCOME                                                                         
+
+SQL> SELECT TRIM(' HE LLO ') FROM DUAL;
+
+TRIM('                                                                          
+------                                                                          
+HE LLO                                                                          
+
+SQL> SELECT TRIM('H' FROM 'HELLO')
+  2  FROM DUAL;
+
+TRIM                                                                            
+----                                                                            
+ELLO                                                                            
+
+SQL> SELECT TRANSLATE9'WELCOME','ME','MM') FROM DUAL;
+SELECT TRANSLATE9'WELCOME','ME','MM') FROM DUAL
+                 *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected 
+
+
+SQL> SELECT TRANSLATE('WELCOME','ME','MM') FROM DUAL;
+
+TRANSLA                                                                         
+-------                                                                         
+WMLCOMM                                                                         
+
+SQL> SELECT TRANSLATE('WELCOME','ME','MAM') FROM DUAL;
+
+TRANSLA                                                                         
+-------                                                                         
+WALCOMA                                                                         
+
+SQL> SELECT REPLACE('WELCOME','ME','MM') FROM DUAL;
+
+REPLACE                                                                         
+-------                                                                         
+WELCOMM                                                                         
+
+SQL> SELECT TRANSLATE('WELCOME','WEL','HI') FROM DUAL;
+
+TRANSL                                                                          
+------                                                                          
+HICOMI                                                                          
+
+SQL> SPOOL OFF
