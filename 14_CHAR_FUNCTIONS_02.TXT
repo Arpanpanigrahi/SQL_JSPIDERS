@@ -1,0 +1,99 @@
+SQL> SELECT CONCAT(ENAME,SAL,JOB) FROM EMP;
+SELECT CONCAT(ENAME,SAL,JOB) FROM EMP
+       *
+ERROR at line 1:
+ORA-00909: invalid number of arguments 
+
+
+SQL> SELECT CONCAT('SQL','PLUS') FROM DUAL;
+
+CONCAT(                                                                         
+-------                                                                         
+SQLPLUS                                                                         
+
+SQL> SELECT CURRENT_DATE FROM DUAL;
+
+CURRENT_D                                                                       
+---------                                                                       
+21-SEP-23                                                                       
+
+SQL> SELECT SYSDATE FROM DUAL;
+
+SYSDATE                                                                         
+---------                                                                       
+21-SEP-23                                                                       
+
+SQL> SELECT SESSIONTIMEZONE FROM DUAL;
+
+SESSIONTIMEZONE                                                                 
+---------------------------------------------------------------------------     
++05:30                                                                          
+
+SQL> SELECT MONTHS_BETWEEN('21-SEP-23','21-FEB-23') FROM DUAL;
+
+MONTHS_BETWEEN('21-SEP-23','21-FEB-23')                                         
+---------------------------------------                                         
+                                      7                                         
+
+SQL> SELECT MONTHS_BETWEEN('21-FEB-23','21-SEP-23') FROM DUAL;
+
+MONTHS_BETWEEN('21-FEB-23','21-SEP-23')                                         
+---------------------------------------                                         
+                                     -7                                         
+
+SQL> SELECT MONTHS_BETWEEN('21-FEB-23','16-DEC-22') FROM DUAL;
+
+MONTHS_BETWEEN('21-FEB-23','16-DEC-22')                                         
+---------------------------------------                                         
+                             2.16129032                                         
+
+SQL> SELECT ADD_MONTHS('23-SEP-23',6) FROM DUAL;
+
+ADD_MONTH                                                                       
+---------                                                                       
+23-MAR-24                                                                       
+
+SQL> SELECT ADD_MONTHS('23-SEP-23',-6) FROM DUAL;
+
+ADD_MONTH                                                                       
+---------                                                                       
+23-MAR-23                                                                       
+
+SQL> SELECT NEXT_DAY('21-SEP-23','THRUSDAY') FROM DUAL;
+SELECT NEXT_DAY('21-SEP-23','THRUSDAY') FROM DUAL
+                            *
+ERROR at line 1:
+ORA-01846: not a valid day of the week 
+
+
+SQL> SELECT NEXT_DAY('21-SEP-23','THURSDAY') FROM DUAL;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+28-SEP-23                                                                       
+
+SQL> SELECT NEXT_DAY('13-SEP-23','WEDNESDAY') FROM DUAL;
+
+NEXT_DAY(                                                                       
+---------                                                                       
+20-SEP-23                                                                       
+
+SQL> SELECT LAST_DAY('23-SEP-23') FROM DUAL;
+
+LAST_DAY(                                                                       
+---------                                                                       
+30-SEP-23                                                                       
+
+SQL> SELECT LAST_DAY('01-FEB-24') FROM DUAL;
+
+LAST_DAY(                                                                       
+---------                                                                       
+29-FEB-24                                                                       
+
+SQL> SELECT CURRENT_TIMESTAMP FROM DUAL;
+
+CURRENT_TIMESTAMP                                                               
+---------------------------------------------------------------------------     
+21-SEP-23 03.46.22.086000 PM +05:30                                             
+
+SQL> SPOOL OFF
