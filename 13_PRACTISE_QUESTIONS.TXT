@@ -1,0 +1,100 @@
+SQL> SELECT SUBSTR(ENAME,1,3) FROM EMP;
+
+SUB                                                                             
+---                                                                             
+ALL                                                                             
+JON                                                                             
+BLA                                                                             
+CLA                                                                             
+SCO                                                                             
+KIN                                                                             
+FOR                                                                             
+
+7 rows selected.
+
+SQL> SELECT SUBSTR(DNAME,-3) FROM DEPT;
+
+SUB                                                                             
+---                                                                             
+ING                                                                             
+RCH                                                                             
+LES                                                                             
+ONS                                                                             
+
+SQL> SELECT LOWER(SUBSTR(JOB,1,3)) FROM EMP;
+
+LOW                                                                             
+---                                                                             
+hr                                                                              
+man                                                                             
+man                                                                             
+man                                                                             
+ana                                                                             
+pre                                                                             
+ana                                                                             
+
+7 rows selected.
+
+SQL> SELECT ENAME FROM EMP
+  2  WHERE LENGTH(JOB)=5;
+
+no rows selected
+
+SQL> SELECT ENAME,SAL FROM EMP
+  2  WHERE SUBSTR(JOB,1,3)='MAN';
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JONES            2975                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+
+SQL> SELECT SAL*12 FROM EMP
+  2  WHERE SUBSTR(JOB,-3)='MAN';
+
+no rows selected
+
+SQL> SELECT JOB FROM EMP
+  2  WHERE INSTR(ENAME,'A')>0;
+
+JOB                                                                             
+---------                                                                       
+HR                                                                              
+MANAGER                                                                         
+MANAGER                                                                         
+
+SQL> SELECT REVERSE('MADAM') FROM DUAL;
+
+REVER                                                                           
+-----                                                                           
+MADAM                                                                           
+
+SQL> SELECT LOWER(LPAD(ENAME,20,'GOODMORNING')) FROM EMP;
+
+LOWER(LPAD(ENAME,20,                                                            
+--------------------                                                            
+goodmorninggoodallen                                                            
+goodmorninggoodjones                                                            
+goodmorninggoodblake                                                            
+goodmorninggoodclark                                                            
+goodmorninggoodscott                                                            
+goodmorninggoodmking                                                            
+goodmorninggoodmford                                                            
+
+7 rows selected.
+
+SQL> SELECT LOWER(CONCAT('GOOD MORNING',ENAME)) FROM EMP;
+
+LOWER(CONCAT('GOODMORN                                                          
+----------------------                                                          
+good morningallen                                                               
+good morningjones                                                               
+good morningblake                                                               
+good morningclark                                                               
+good morningscott                                                               
+good morningking                                                                
+good morningford                                                                
+
+7 rows selected.
+
+SQL> SPOOL OFF
