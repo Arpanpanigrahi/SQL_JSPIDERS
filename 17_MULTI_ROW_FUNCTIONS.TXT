@@ -1,0 +1,87 @@
+SQL> SELECT MAX(SAL) FROM EMP;
+
+  MAX(SAL)                                                                      
+----------                                                                      
+     20000                                                                      
+
+SQL> SELECT MAX(HIREDATE) FROM EMP;
+
+MAX(HIRED                                                                       
+---------                                                                       
+01-JUL-20                                                                       
+
+SQL> SELECT MAX(SAL) FROM EMP
+  2  WHERE JOB='SALESMAN';
+
+  MAX(SAL)                                                                      
+----------                                                                      
+                                                                                
+
+SQL> SELECT MIN(SAL) FROM EMP;
+
+  MIN(SAL)                                                                      
+----------                                                                      
+      1600                                                                      
+
+SQL> SELECT MIN(HIREDATE) FROM EMP
+  2  WHERE JOB='CLERK';
+
+MIN(HIRED                                                                       
+---------                                                                       
+                                                                                
+
+SQL> SELECT MIN(COMM) FROM EMP
+  2  WHERE DEPTNO=30;
+
+ MIN(COMM)                                                                      
+----------                                                                      
+      1500                                                                      
+
+SQL> SELECT AVG(SAL) FROM EMP;
+
+  AVG(SAL)                                                                      
+----------                                                                      
+5410.71429                                                                      
+
+SQL> SELECT AVG(SAL) FROM EMP
+  2  WHERE DEPTNO IN(10,20);
+
+  AVG(SAL)                                                                      
+----------                                                                      
+      6685                                                                      
+
+SQL> SELECT SUM(SAL) FROM EMP
+  2  WHERE JOB='MANAGER';
+
+  SUM(SAL)                                                                      
+----------                                                                      
+      8275                                                                      
+
+SQL> SELECT SUM(SAL) FROM EMP
+  2  WHERE JOB LIKE 'S%';
+
+  SUM(SAL)                                                                      
+----------                                                                      
+                                                                                
+
+SQL> SELECT COUNT(ENAME) FROM EMP;
+
+COUNT(ENAME)                                                                    
+------------                                                                    
+           7                                                                    
+
+SQL> SELECT COUNT(COMM) FROM EMP;
+
+COUNT(COMM)                                                                     
+-----------                                                                     
+          1                                                                     
+
+SQL> SELECT COUNT(ENAME) FROM EMP
+  2  WHERE DEPTNO=20 AND COUNT(ENAME)>3;
+WHERE DEPTNO=20 AND COUNT(ENAME)>3
+                    *
+ERROR at line 2:
+ORA-00934: group function is not allowed here 
+
+
+SQL> SPOOL OFF

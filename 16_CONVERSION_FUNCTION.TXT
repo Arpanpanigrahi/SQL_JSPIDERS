@@ -1,0 +1,81 @@
+SQL> SELECT TO_DATE('2023-SEP-23','YYYY-MM-DD') FROM DUAL;
+
+TO_DATE('                                                                       
+---------                                                                       
+23-SEP-23                                                                       
+
+SQL> SELECT TO_DATE('SEP/2023/22','MM/YYYY/DD') FROM DUAL;
+
+TO_DATE('                                                                       
+---------                                                                       
+22-SEP-23                                                                       
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,'YYYY-MM-DD') FROM DUAL;
+
+TO_CHAR(CU                                                                      
+----------                                                                      
+2023-09-23                                                                      
+
+SQL> SELECT TO_CHAR(CURRENT_DATE,'YYYY-MON-DD') FROM DUAL;
+
+TO_CHAR(CUR                                                                     
+-----------                                                                     
+2023-SEP-23                                                                     
+
+SQL> SELECT TO_CHAR(SYSDATE,'MON/YY/DD') FROM DUAL;
+
+TO_CHAR(S                                                                       
+---------                                                                       
+SEP/23/23                                                                       
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'MON')='AUG';
+
+no rows selected
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'YYYY')='1987';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7788 SCOTT      ANALYST         7566 19-APR-87      20000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DY')='WED';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      HR              7698 01-JUL-20       1600       1500      
+        30                                                                      
+                                                                                
+
+SQL> SELECT * FROM EMP
+  2  WHERE TO_CHAR(HIREDATE,'DAY')='WEDNESDAY';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7499 ALLEN      HR              7698 01-JUL-20       1600       1500      
+        30                                                                      
+                                                                                
+
+SQL> SELECT TO_CHAR(DATE '1980-12-17','DAY') FROM DUAL;
+
+TO_CHAR(D                                                                       
+---------                                                                       
+WEDNESDAY                                                                       
+
+SQL> SELECT TO_CHAR(DATE '2023-10-02','DAY') FROM DUAL;
+
+TO_CHAR(D                                                                       
+---------                                                                       
+MONDAY                                                                          
+
+SQL> SPOOL OFF
