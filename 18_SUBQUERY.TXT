@@ -1,0 +1,109 @@
+SQL> SELECT DNAME FROM DEPT
+  2  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE ENAME='SMITH');
+
+DNAME                                                                           
+--------------                                                                  
+RESEARCH                                                                        
+
+SQL> SELECT ENAME, SAL FROM EMP
+  2  WHERE DEPTNO=(SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK');
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+CLARK            2450                                                           
+KING             5000                                                           
+MILLER           1300                                                           
+
+SQL> SELECT LOC FROM DEPT
+  2  WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE JOB='SALESMAN');
+WHERE DEPTNO=(SELECT DEPTNO FROM EMP WHERE JOB='SALESMAN')
+              *
+ERROR at line 2:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> SELECT LOC FROM DEPT
+  2  WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE JOB='SALESMAN');
+
+LOC                                                                             
+-------------                                                                   
+CHICAGO                                                                         
+
+SQL> SELECT SAL*12 FROM EMP
+  2  WHERE DEPTNO IN (SELECT DEPTNO FROM DEPT WHERE LOC IN('DALLAS','CHICAGO'));
+
+    SAL*12                                                                      
+----------                                                                      
+      9600                                                                      
+     19200                                                                      
+     15000                                                                      
+     35700                                                                      
+     15000                                                                      
+     34200                                                                      
+     36000                                                                      
+     18000                                                                      
+     13200                                                                      
+     11400                                                                      
+     36000                                                                      
+
+11 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE SAL=(SELECT MAX(SAL) FROM EMP);
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+
+SQL> SELECT ENAME, SAL FROM EMP
+  2  WHERE JOB=(SELECT JOB FROM EMP WHERE ENAME='JONES');
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+JONES            2975                                                           
+BLAKE            2850                                                           
+CLARK            2450                                                           
+
+SQL> SELECT * FROM DEPT
+  2  WHERE DEPTNO IN(SELECT DEPTNO FROM EMP WHERE ENAME IN('SMITH','ALLEN','SCOTT'));
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        20 RESEARCH       DALLAS                                                
+        30 SALES          CHICAGO                                               
+
+SQL> SELECT ENAME, JOB, HIREDATE FROM EMP
+  2  WHERE DEPTNO IN(SELECT DEPTNO FROM DEPT WHERE DNAME IN('RESEARCH','SALES'));
+
+ENAME      JOB       HIREDATE                                                   
+---------- --------- ---------                                                  
+SMITH      CLERK     17-DEC-80                                                  
+ALLEN      SALESMAN  20-FEB-81                                                  
+WARD       SALESMAN  22-FEB-81                                                  
+JONES      MANAGER   02-APR-81                                                  
+MARTIN     SALESMAN  28-SEP-81                                                  
+BLAKE      MANAGER   01-MAY-81                                                  
+SCOTT      ANALYST   19-APR-87                                                  
+TURNER     SALESMAN  08-SEP-81                                                  
+ADAMS      CLERK     23-MAY-87                                                  
+JAMES      CLERK     03-DEC-81                                                  
+FORD       ANALYST   03-DEC-81                                                  
+
+11 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE EMPNO=(SELECT MGR FROM EMP WHERE ENAME='SMITH');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SPOOL OFF
