@@ -1,0 +1,160 @@
+SQL> SELECT MAX(SAL) FROM EMP WHERE SAL<
+  2  (SELECT MAX(SAL) FROM EMP WHERE SAL<
+  3  (SELECT MAX(SAL) FROM EMP));
+
+  MAX(SAL)                                                                      
+----------                                                                      
+      2975                                                                      
+
+SQL> SELECT DNAME FROM DEPT WHERE DEPTNO=
+  2  (SELECT DEPTNO FROM EMP WHERE COMM=
+  3  (SELECT MAX(COMM) FROM EMP));
+
+DNAME                                                                           
+--------------                                                                  
+SALES                                                                           
+
+SQL> SELECT ENAME, SAL FROM EMP WHERE SAL=
+  2  (SELECT MAX(SAL) FROM EMP WHERE DEPTNO=
+  3  (SELECT DEPTNO FROM DEPT WHERE DNAME='ACCOUNTING'));
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+KING             5000                                                           
+
+SQL> SELECT MIN(SAL) FROM EMP WHERE SAL>
+  2  (SELECT MIN(SAL) FROM EMP WHERE SAL>
+  3  (SELECT MIN(SAL) FROM EMP));
+
+  MIN(SAL)                                                                      
+----------                                                                      
+      1300                                                                      
+
+SQL> SELECT DNAME, LOC FROM DEPT WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM EMP WHERE COMM=
+  3  (SELECT MAX(COMM) FROM EMP WHERE COMM<
+  4  (SELECT MAX(COMM) FROM EMP)));
+
+DNAME          LOC                                                              
+-------------- -------------                                                    
+SALES          CHICAGO                                                          
+
+SQL> SELECT DNAME FROM DEPT WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM EMP WHERE JOB IN
+  3  (SELECT JOB FROM EMP WHERE ENAME='ALLEN'));
+
+DNAME                                                                           
+--------------                                                                  
+SALES                                                                           
+
+SQL> SELECT LOC FROM DEPT WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM EMP WHERE SAL>
+  3  (SELECT SAL FROM EMP WHERE ENAME='MILLER'));
+
+LOC                                                                             
+-------------                                                                   
+CHICAGO                                                                         
+DALLAS                                                                          
+NEW YORK                                                                        
+
+SQL> SELECT * FROM EMP
+  2  WHERE JOB!=(SELECT JOB FROM EMP WHERE ENAME='JONES') AND
+  3  SAL>(SELECT SAL FROM EMP WHERE ENAME='MARTIN');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT * FROM EMP WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM DEPT WHERE LOC IN
+  3  (SELECT LOC FROM DEPT WHERE DEPTNO IN
+  4  (SELECT DEPTNO FROM EMP WHERE EMPNO IN
+  5  (SELECT MGR FROM EMP WHERE ENAME='ADAMS'))));
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20                                                                      
+                                                                                
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT LOC FROM DEPT WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM EMP WHERE EMPNO IN
+  3  (SELECT MGR FROM EMP WHERE EMPNO IN
+  4  (SELECT MGR FROM EMP WHERE JOB='SALESMAN')));
+
+LOC                                                                             
+-------------                                                                   
+NEW YORK                                                                        
+
+SQL> SELECT * FROM EMP WHERE SAL>
+  2  (SELECT SAL FROM EMP WHERE ENAME='MARTIN') AND
+  3  SAL<(SELECT SAL FROM EMP WHERE ENAME='KING');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20                                                                      
+                                                                                
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10                                                                      
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20                                                                      
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20                                                                      
+                                                                                
+
+SQL> SELECT COUNT(*) FROM EMP WHERE SAL<
+  2  (SELECT SAL FROM EMP WHERE EMPNO IN
+  3  (SELECT MGR FROM EMP WHERE ENAME='BLAKE'));
+
+  COUNT(*)                                                                      
+----------                                                                      
+        13                                                                      
+
+SQL> SELECT ENAME FROM EMP WHERE DEPTNO IN
+  2  (SELECT DEPTNO FROM DEPT WHERE LOC='NEW YORK') AND
+  3  JOB=(SELECT JOB FROM EMP WHERE ENAME='JONES');
+
+ENAME                                                                           
+----------                                                                      
+CLARK                                                                           
+
+SQL> SPOOL OFF

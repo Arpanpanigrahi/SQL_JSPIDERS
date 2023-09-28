@@ -1,0 +1,211 @@
+SQL> SELECT DISTINCT JOB FROM EMP;
+
+JOB                                                                             
+---------                                                                       
+CLERK                                                                           
+SALESMAN                                                                        
+PRESIDENT                                                                       
+MANAGER                                                                         
+ANALYST                                                                         
+
+SQL> SELECT DISTINCT SAL FROM EMP;
+
+       SAL                                                                      
+----------                                                                      
+      2450                                                                      
+      5000                                                                      
+      1300                                                                      
+      2000                                                                      
+      2975                                                                      
+      1100                                                                      
+      3000                                                                      
+       800                                                                      
+
+8 rows selected.
+
+SQL> SELECT DISTINCT JOB,SAL FROM EMP;
+
+JOB              SAL                                                            
+--------- ----------                                                            
+CLERK           1300                                                            
+CLERK           2000                                                            
+CLERK            800                                                            
+MANAGER         2450                                                            
+PRESIDENT       5000                                                            
+ANALYST         3000                                                            
+SALESMAN        2000                                                            
+MANAGER         2975                                                            
+MANAGER         2000                                                            
+CLERK           1100                                                            
+
+10 rows selected.
+
+SQL> SELECT ENAME FROM EMP
+  2  ORDER BY ENAME ASC;
+
+ENAME                                                                           
+----------                                                                      
+ADAMS                                                                           
+ALLEN                                                                           
+BLAKE                                                                           
+CLARK                                                                           
+FORD                                                                            
+JAMES                                                                           
+JONES                                                                           
+KING                                                                            
+MARTIN                                                                          
+MILLER                                                                          
+SCOTT                                                                           
+
+ENAME                                                                           
+----------                                                                      
+SMITH                                                                           
+TURNER                                                                          
+WARD                                                                            
+
+14 rows selected.
+
+SQL> SELECT ENAME, SAL FROM EMP
+  2  ORDER BY SAL ASC;
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ADAMS            1100                                                           
+MILLER           1300                                                           
+TURNER           2000                                                           
+BLAKE            2000                                                           
+JAMES            2000                                                           
+WARD             2000                                                           
+ALLEN            2000                                                           
+MARTIN           2000                                                           
+CLARK            2450                                                           
+JONES            2975                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SCOTT            3000                                                           
+FORD             3000                                                           
+KING             5000                                                           
+
+14 rows selected.
+
+SQL> SELECT ENAME, SAL FROM EMP
+  2  ORDER BY SAL;
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SMITH             800                                                           
+ADAMS            1100                                                           
+MILLER           1300                                                           
+TURNER           2000                                                           
+BLAKE            2000                                                           
+JAMES            2000                                                           
+WARD             2000                                                           
+ALLEN            2000                                                           
+MARTIN           2000                                                           
+CLARK            2450                                                           
+JONES            2975                                                           
+
+ENAME             SAL                                                           
+---------- ----------                                                           
+SCOTT            3000                                                           
+FORD             3000                                                           
+KING             5000                                                           
+
+14 rows selected.
+
+SQL> SELECT ENAME, JOB FROM EMP
+  2  ORDER BY ENAME, JOB DESC;
+
+ENAME      JOB                                                                  
+---------- ---------                                                            
+ADAMS      CLERK                                                                
+ALLEN      SALESMAN                                                             
+BLAKE      MANAGER                                                              
+CLARK      MANAGER                                                              
+FORD       ANALYST                                                              
+JAMES      CLERK                                                                
+JONES      MANAGER                                                              
+KING       PRESIDENT                                                            
+MARTIN     SALESMAN                                                             
+MILLER     CLERK                                                                
+SCOTT      ANALYST                                                              
+
+ENAME      JOB                                                                  
+---------- ---------                                                            
+SMITH      CLERK                                                                
+TURNER     SALESMAN                                                             
+WARD       SALESMAN                                                             
+
+14 rows selected.
+
+SQL> SELECT SAL, ENAME FROM EMP
+  2  ORDER BY SAL DESC, ENAME;
+
+       SAL ENAME                                                                
+---------- ----------                                                           
+      5000 KING                                                                 
+      3000 FORD                                                                 
+      3000 SCOTT                                                                
+      2975 JONES                                                                
+      2450 CLARK                                                                
+      2000 ALLEN                                                                
+      2000 BLAKE                                                                
+      2000 JAMES                                                                
+      2000 MARTIN                                                               
+      2000 TURNER                                                               
+      2000 WARD                                                                 
+
+       SAL ENAME                                                                
+---------- ----------                                                           
+      1300 MILLER                                                               
+      1100 ADAMS                                                                
+       800 SMITH                                                                
+
+14 rows selected.
+
+SQL> SELECT * FROM EMP
+  2  WHERE ROWNUM<=3;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO                                                                      
+----------                                                                      
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20                                                                      
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       2000        300      
+        30                                                                      
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       2000        500      
+        30                                                                      
+                                                                                
+
+SQL> SELECT * FROM DEPT
+  2  WHERE ROWNUM<=2;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+
+SQL> SELECT * FROM DEPT
+  2  WHERE ROWNUM<3;
+
+    DEPTNO DNAME          LOC                                                   
+---------- -------------- -------------                                         
+        10 ACCOUNTING     NEW YORK                                              
+        20 RESEARCH       DALLAS                                                
+
+SQL> SELECT ENAME, SAL*12, JOB FROM EMP
+  2  WHERE ROWNUM<=4;
+
+ENAME          SAL*12 JOB                                                       
+---------- ---------- ---------                                                 
+SMITH            9600 CLERK                                                     
+ALLEN           24000 SALESMAN                                                  
+WARD            24000 SALESMAN                                                  
+JONES           35700 MANAGER                                                   
+
+SQL> SPOOL OFF
