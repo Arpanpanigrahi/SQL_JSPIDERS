@@ -1,0 +1,37 @@
+SQL>  select * from
+  2   (select empno, ename, sal, rownum rn
+  3   from emp
+  4   order by empno)
+  5   where  mod (rn, 2) <> 0;
+
+     EMPNO ENAME             SAL         RN                                     
+---------- ---------- ---------- ----------                                     
+      7369 SMITH             800          1                                     
+      7521 WARD             2000          3                                     
+      7654 MARTIN           2000          5                                     
+      7782 CLARK            2450          7                                     
+      7839 KING             5000          9                                     
+      7876 ADAMS            1100         11                                     
+      7902 FORD             3000         13                                     
+
+7 rows selected.
+
+SQL>  select * from
+  2   (select empno, ename, sal, rownum rn
+  3   from emp
+  4   order by empno)
+  5   where  mod (rn, 2) = 0;
+
+     EMPNO ENAME             SAL         RN                                     
+---------- ---------- ---------- ----------                                     
+      7499 ALLEN            2000          2                                     
+      7566 JONES            2975          4                                     
+      7698 BLAKE            2000          6                                     
+      7788 SCOTT            3000          8                                     
+      7844 TURNER           2000         10                                     
+      7900 JAMES            2000         12                                     
+      7934 MILLER           1300         14                                     
+
+7 rows selected.
+
+SQL> SPOOL OFF
