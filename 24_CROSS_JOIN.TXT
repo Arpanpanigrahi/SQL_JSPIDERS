@@ -1,0 +1,228 @@
+SQL> SELECT EMP.ENAME, DEPT.DNAME
+  2  FROM EMP CROSS JOIN DEPT;
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+SMITH      ACCOUNTING                                                           
+ALLEN      ACCOUNTING                                                           
+WARD       ACCOUNTING                                                           
+JONES      ACCOUNTING                                                           
+MARTIN     ACCOUNTING                                                           
+BLAKE      ACCOUNTING                                                           
+CLARK      ACCOUNTING                                                           
+SCOTT      ACCOUNTING                                                           
+KING       ACCOUNTING                                                           
+TURNER     ACCOUNTING                                                           
+ADAMS      ACCOUNTING                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+JAMES      ACCOUNTING                                                           
+FORD       ACCOUNTING                                                           
+MILLER     ACCOUNTING                                                           
+SMITH      RESEARCH                                                             
+ALLEN      RESEARCH                                                             
+WARD       RESEARCH                                                             
+JONES      RESEARCH                                                             
+MARTIN     RESEARCH                                                             
+BLAKE      RESEARCH                                                             
+CLARK      RESEARCH                                                             
+SCOTT      RESEARCH                                                             
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+KING       RESEARCH                                                             
+TURNER     RESEARCH                                                             
+ADAMS      RESEARCH                                                             
+JAMES      RESEARCH                                                             
+FORD       RESEARCH                                                             
+MILLER     RESEARCH                                                             
+SMITH      SALES                                                                
+ALLEN      SALES                                                                
+WARD       SALES                                                                
+JONES      SALES                                                                
+MARTIN     SALES                                                                
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+BLAKE      SALES                                                                
+CLARK      SALES                                                                
+SCOTT      SALES                                                                
+KING       SALES                                                                
+TURNER     SALES                                                                
+ADAMS      SALES                                                                
+JAMES      SALES                                                                
+FORD       SALES                                                                
+MILLER     SALES                                                                
+SMITH      OPERATIONS                                                           
+ALLEN      OPERATIONS                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+WARD       OPERATIONS                                                           
+JONES      OPERATIONS                                                           
+MARTIN     OPERATIONS                                                           
+BLAKE      OPERATIONS                                                           
+CLARK      OPERATIONS                                                           
+SCOTT      OPERATIONS                                                           
+KING       OPERATIONS                                                           
+TURNER     OPERATIONS                                                           
+ADAMS      OPERATIONS                                                           
+JAMES      OPERATIONS                                                           
+FORD       OPERATIONS                                                           
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+MILLER     OPERATIONS                                                           
+
+56 rows selected.
+
+SQL> SELECT EMP.ENAME, DEPT.DNAME
+  2  FROM EMP CROSS DEPT
+  3  WHERE EMP.ENAME='SMITH';
+FROM EMP CROSS DEPT
+               *
+ERROR at line 2:
+ORA-00933: SQL command not properly ended 
+
+
+SQL> SELECT EMP.ENAME, DEPT.DNAME
+  2  FROM EMP CROSS JOIN DEPT
+  3   WHERE EMP.ENAME='SMITH';
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+SMITH      ACCOUNTING                                                           
+SMITH      RESEARCH                                                             
+SMITH      SALES                                                                
+SMITH      OPERATIONS                                                           
+
+SQL> SELECT EMP.ENAME. EMP.SAL/2, DEPT.LOC
+  2  FROM EMP, DEPT
+  3  WHERE EMP.JOB='SALESMAN';
+SELECT EMP.ENAME. EMP.SAL/2, DEPT.LOC
+       *
+ERROR at line 1:
+ORA-00904: "EMP"."ENAME"."EMP"."SAL": invalid identifier 
+
+
+SQL> SELECT EMP.ENAME, EMP.SAL/2, DEPT.LOC
+  2   FROM EMP, DEPT
+  3   WHERE EMP.JOB='SALESMAN';
+
+ENAME       EMP.SAL/2 LOC                                                       
+---------- ---------- -------------                                             
+ALLEN            1000 NEW YORK                                                  
+ALLEN            1000 DALLAS                                                    
+ALLEN            1000 CHICAGO                                                   
+ALLEN            1000 BOSTON                                                    
+WARD             1000 NEW YORK                                                  
+WARD             1000 DALLAS                                                    
+WARD             1000 CHICAGO                                                   
+WARD             1000 BOSTON                                                    
+MARTIN           1000 NEW YORK                                                  
+MARTIN           1000 DALLAS                                                    
+MARTIN           1000 CHICAGO                                                   
+
+ENAME       EMP.SAL/2 LOC                                                       
+---------- ---------- -------------                                             
+MARTIN           1000 BOSTON                                                    
+TURNER           1000 NEW YORK                                                  
+TURNER           1000 DALLAS                                                    
+TURNER           1000 CHICAGO                                                   
+TURNER           1000 BOSTON                                                    
+
+16 rows selected.
+
+SQL> SELECT EMP.ENAME, EMP.JOB, DEPT.DNAME
+  2  FROM EMP, DEPT
+  3  WHERE EMP.SAL NOT BETWEEN 1000 AND 3000
+  4  AND EMP.COMM>1500;
+
+no rows selected
+
+SQL> SELECT EMP.*, DEPT.LOC
+  2  FROM EMP, DEPT
+  3  WHERE EMP.MGR IS NULL;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10 NEW YORK                                                             
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10 DALLAS                                                               
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10 CHICAGO                                                              
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10 BOSTON                                                               
+                                                                                
+
+SQL> SELECT EMP.*, DEPT.*
+  2  FROM EMP, DEPT
+  3  WHERE EMP.ENAME='MARTIN';
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO     DEPTNO DNAME          LOC                                        
+---------- ---------- -------------- -------------                              
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       2000       1400      
+        30         10 ACCOUNTING     NEW YORK                                   
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       2000       1400      
+        30         20 RESEARCH       DALLAS                                     
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       2000       1400      
+        30         30 SALES          CHICAGO                                    
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO     DEPTNO DNAME          LOC                                        
+---------- ---------- -------------- -------------                              
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       2000       1400      
+        30         40 OPERATIONS     BOSTON                                     
+                                                                                
+
+SQL> SELECT EMPNO, ROWNUM RN FROM
+  2  (SELECT EMPNO, ROWNUM RN FROM EMP)
+  3  WHERE MOD(RN,2)=0;
+
+     EMPNO         RN                                                           
+---------- ----------                                                           
+      7499          1                                                           
+      7566          2                                                           
+      7698          3                                                           
+      7788          4                                                           
+      7844          5                                                           
+      7900          6                                                           
+      7934          7                                                           
+
+7 rows selected.
+
+SQL> SELECT EMPNO, ROWNUM RN FROM
+  2  (SELECT EMPNO, ROWNUM RN FROM EMP)
+  3  WHERE MOD(RN,2)!=0;
+
+     EMPNO         RN                                                           
+---------- ----------                                                           
+      7369          1                                                           
+      7521          2                                                           
+      7654          3                                                           
+      7782          4                                                           
+      7839          5                                                           
+      7876          6                                                           
+      7902          7                                                           
+
+7 rows selected.
+
+SQL> SPOOL OFF
