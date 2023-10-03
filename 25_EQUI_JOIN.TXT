@@ -1,0 +1,152 @@
+SQL> SELECT EMP.ENAME, DEPT.DNAME
+  2  FROM EMP, DEPT
+  3  WHERE EMP.DEPTNO = DEPT.DEPTNO;
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+SMITH      RESEARCH                                                             
+ALLEN      SALES                                                                
+WARD       SALES                                                                
+JONES      RESEARCH                                                             
+MARTIN     SALES                                                                
+BLAKE      SALES                                                                
+CLARK      ACCOUNTING                                                           
+SCOTT      RESEARCH                                                             
+KING       ACCOUNTING                                                           
+TURNER     SALES                                                                
+ADAMS      RESEARCH                                                             
+
+ENAME      DNAME                                                                
+---------- --------------                                                       
+JAMES      SALES                                                                
+FORD       RESEARCH                                                             
+MILLER     ACCOUNTING                                                           
+
+14 rows selected.
+
+SQL> SELECT EMP.SAL, DEPT.DNAME
+  2  FROM EMP, DEPT
+  3  WHERE EMP.ENAME='SMITH' AND EMP.DEPTNO=DEPT.DEPTNO;
+
+       SAL DNAME                                                                
+---------- --------------                                                       
+       800 RESEARCH                                                             
+
+SQL> SELECT EMP.SAL*12, EMP.HIREDATE, DEPT.*
+  2  FROM EMP, DEPT
+  3  WHERE EMP.JOB='ANALYST' AND EMP.SAL>1200 AND EMP.DEPTNO=DEPT.DEPTNO;
+
+EMP.SAL*12 HIREDATE      DEPTNO DNAME          LOC                              
+---------- --------- ---------- -------------- -------------                    
+     36000 19-APR-87         20 RESEARCH       DALLAS                           
+     36000 03-DEC-81         20 RESEARCH       DALLAS                           
+
+SQL> SELECT E.EMPNO, E.ENAME, E.SAL, E.COMM, D.DNAME
+  2  FROM EMP E, DEPT D
+  3  WHERE E.DEPTNO = D.DEPTNO;
+
+     EMPNO ENAME             SAL       COMM DNAME                               
+---------- ---------- ---------- ---------- --------------                      
+      7369 SMITH             800            RESEARCH                            
+      7499 ALLEN            2000        300 SALES                               
+      7521 WARD             2000        500 SALES                               
+      7566 JONES            2975            RESEARCH                            
+      7654 MARTIN           2000       1400 SALES                               
+      7698 BLAKE            2000            SALES                               
+      7782 CLARK            2450            ACCOUNTING                          
+      7788 SCOTT            3000            RESEARCH                            
+      7839 KING             5000            ACCOUNTING                          
+      7844 TURNER           2000          0 SALES                               
+      7876 ADAMS            1100            RESEARCH                            
+
+     EMPNO ENAME             SAL       COMM DNAME                               
+---------- ---------- ---------- ---------- --------------                      
+      7900 JAMES            2000            SALES                               
+      7902 FORD             3000            RESEARCH                            
+      7934 MILLER           1300            ACCOUNTING                          
+
+14 rows selected.
+
+SQL> SELECT EMPLOYEE.*, DEPARTMENT.LOC
+  2  FROM EMP.EMPLOYEE, DEPT.DEPARTMENT
+  3  WHERE EMPLOYEE.DEPTNO=DEPARTMENT.DEPTNO;
+FROM EMP.EMPLOYEE, DEPT.DEPARTMENT
+                        *
+ERROR at line 2:
+ORA-00942: table or view does not exist 
+
+
+SQL>  SELECT EMPLOYEE.*, DEPARTMENT.LOC
+  2  FROM EMP EMPLOYEE, DEPT DEPARTMENT
+  3  WHERE EMPLOYEE.DEPTNO=DEPARTMENT.DEPTNO;
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7369 SMITH      CLERK           7902 17-DEC-80        800                 
+        20 DALLAS                                                               
+                                                                                
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       2000        300      
+        30 CHICAGO                                                              
+                                                                                
+      7521 WARD       SALESMAN        7698 22-FEB-81       2000        500      
+        30 CHICAGO                                                              
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7566 JONES      MANAGER         7839 02-APR-81       2975                 
+        20 DALLAS                                                               
+                                                                                
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       2000       1400      
+        30 CHICAGO                                                              
+                                                                                
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2000                 
+        30 CHICAGO                                                              
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7782 CLARK      MANAGER         7839 09-JUN-81       2450                 
+        10 NEW YORK                                                             
+                                                                                
+      7788 SCOTT      ANALYST         7566 19-APR-87       3000                 
+        20 DALLAS                                                               
+                                                                                
+      7839 KING       PRESIDENT            17-NOV-81       5000                 
+        10 NEW YORK                                                             
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7844 TURNER     SALESMAN        7698 08-SEP-81       2000          0      
+        30 CHICAGO                                                              
+                                                                                
+      7876 ADAMS      CLERK           7788 23-MAY-87       1100                 
+        20 DALLAS                                                               
+                                                                                
+      7900 JAMES      CLERK           7698 03-DEC-81       2000                 
+        30 CHICAGO                                                              
+                                                                                
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM      
+---------- ---------- --------- ---------- --------- ---------- ----------      
+    DEPTNO LOC                                                                  
+---------- -------------                                                        
+      7902 FORD       ANALYST         7566 03-DEC-81       3000                 
+        20 DALLAS                                                               
+                                                                                
+      7934 MILLER     CLERK           7782 23-JAN-82       1300                 
+        10 NEW YORK                                                             
+                                                                                
+
+14 rows selected.
+
+SQL> SPOOL OFF
